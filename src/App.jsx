@@ -7,7 +7,7 @@ function App() {
 	const [isOpen, setIsOpen] = useState(true);
 
 	const autocompleteLocation = async (event) => {
-		const response = await fetch(`http://api.weatherapi.com/v1/search.json?key=c51fd6ac6c42402e9b2195653241603&q=${event.currentTarget.value}`);
+		const response = await fetch(`https://api.weatherapi.com/v1/search.json?key=c51fd6ac6c42402e9b2195653241603&q=${event.currentTarget.value}`);
 		const respJson = await response.json();
 		try {
 			setAutocomplete(respJson);
@@ -19,13 +19,13 @@ function App() {
 	const getWeather = async (event) => {
 		if (event.key == "Enter" || event.type == "click") {
 			if (event.currentTarget.value == undefined) {
-				const response = await fetch(`http://api.weatherapi.com/v1/current.json?key=c51fd6ac6c42402e9b2195653241603&q=${event.currentTarget.dataset.name}&aqi=no`);
+				const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=c51fd6ac6c42402e9b2195653241603&q=${event.currentTarget.dataset.name}&aqi=no`);
 				const respJson = await response.json();
 				console.log(respJson.current);
 				setWeather(respJson);
 				setIsOpen(false);
 			} else {
-				const response = await fetch(`http://api.weatherapi.com/v1/current.json?key=c51fd6ac6c42402e9b2195653241603&q=${event.currentTarget.value}&aqi=no`);
+				const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=c51fd6ac6c42402e9b2195653241603&q=${event.currentTarget.value}&aqi=no`);
 				const respJson = await response.json();
 				console.log(respJson.current);
 				setWeather(respJson);
